@@ -1,0 +1,13 @@
+- hosts: localhost
+  become: yes
+  vars:
+   code_name: mycode
+   version_name:  4.0
+  tasks:
+  - name: deploy   
+    template:
+     src: cinfig.j2
+     dest: /opt/config
+
+   
+

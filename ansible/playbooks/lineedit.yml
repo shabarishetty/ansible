@@ -1,0 +1,10 @@
+- hosts: localhost
+  become: yes
+  tasks:
+   - name: add the content
+     lineinfile: 
+      path: /etc/hosts
+      state: absent
+      regexp: 'mydo 192.168.44.137'
+      
+      

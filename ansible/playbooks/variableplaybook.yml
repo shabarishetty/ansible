@@ -1,0 +1,12 @@
+- hosts: localhost
+  become: yes
+  tasks:
+   - name: create the directory
+     file:
+      name: "{{ working_directory }}"
+      state: directory
+   - name:  worte service text
+     lineinfile:
+      path: "{{ working_directory }}/service.txt"
+      create: yes
+      line: "{{service_list}}"

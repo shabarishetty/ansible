@@ -1,0 +1,23 @@
+- hosts: remote
+  become: yes
+  vars:
+   share_path: /mnt/nfsroot
+  tasks:
+   - name: install nfs
+     yum:
+      name: nfs-utils
+      state: latest
+   - name: start the service
+     service:
+      name: nfs-server
+      state: started
+      enabled: yes
+   - name: deploy the config 
+     template:
+      src: /home/ansible/playbooks/exports.j2
+      dest: /etc/exports
+     notify:
+  handlers:
+    - name: update nfs exports
+      command: exportfs -a
+      listen: update nfs

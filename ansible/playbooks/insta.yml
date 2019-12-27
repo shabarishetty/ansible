@@ -1,0 +1,8 @@
+- hosts: remote
+  become: yes
+  tasks:
+   - name: removw
+     yum:
+      name: nmap
+      state: absent
+    
